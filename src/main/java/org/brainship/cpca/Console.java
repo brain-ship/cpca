@@ -45,7 +45,7 @@ public class Console {
 	public void printAllScreens(String delimiter) {
 		Vector<Vector<String>> screens = this.cps.getScreens();
 		for(int i = 0; i < screens.size(); i++) {
-			if(i != 0 && delimiter != null) println(delimiter);
+			if(i != 0 && delimiter != null) print(delimiter);
 			printStreamScreen(i);
 		}
 	}
