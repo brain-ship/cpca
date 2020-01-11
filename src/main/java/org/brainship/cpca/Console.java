@@ -1,6 +1,12 @@
+package org.brainship.cpca;
+
+import java.util.Vector;
+
 public class Console {
 	
-	public int charsPrinted;
+	private ConsolePrintStream cps;
+	
+	private int charsPrinted;
 	
 	public Console() {
 		charsPrinted = 0;
@@ -14,6 +20,38 @@ public class Console {
 	public <T extends Object> void println(T element) {
 		System.out.println(element.toString());
 		charsPrinted+=element.toString().length()+1;
+	}
+	
+	public void println() {
+		System.out.println();
+		charsPrinted++;
+	}
+	
+	public void loadConsolePrintStream(ConsolePrintStream cps) {
+		this.cps = cps;
+	}
+	
+	public void printStreamScreen(int index) {
+		Vector<String> v = this.cps.getScreens().elementAt(index);
+		for(int i = 0; i < v.size(); i++)
+			println(v.elementAt(i));
+	}
+	
+	public void printStreamScreenAndFlush(int index) {
+		printStreamScreen(index);
+		clear();
+	}
+	
+	public void printAllScreens(String delimiter) {
+		Vector<Vector<String>> screens = this.cps.getScreens();
+		for(int i = 0; i < screens.size(); i++) {
+			if(i != 0 && delimiter != null) println(delimiter);
+			printStreamScreen(i);
+		}
+	}
+	
+	public void printAllScreens() {
+		printAllScreens(null);
 	}
 	
 	public void clear() {
