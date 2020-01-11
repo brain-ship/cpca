@@ -50,6 +50,10 @@ public class ConsolePrintStream
 		status = false;
 	}
 	
+	public boolean isStreamOpen() {
+		return status;
+	}
+	
 	public Vector<Vector<String>> getScreens() {
 		return this.screens;
 	}
