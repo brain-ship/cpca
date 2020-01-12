@@ -8,6 +8,8 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        Console c = new Console();
+		c.flush();
+		c.println(System.getProperty("os.name"));
     }
 }
